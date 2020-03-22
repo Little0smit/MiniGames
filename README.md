@@ -1,6 +1,6 @@
 # Welcome to my mini games demo page.
 
-This is a collection of mini games and small ongoing projects i'm working on or have completed in the past. 
+This is a collection of mini games and small ongoing projects (all programmed in Java) i'm working on or have completed in the past. 
 
 Current Games finished are:
 	<li>Snake
