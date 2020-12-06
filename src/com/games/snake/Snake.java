@@ -1,4 +1,4 @@
-package games.snake;
+package com.games.snake;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ public class Snake {
     public static int CELLSIZE = 8;
     public static final int STARTX = 160, STARTY = 160 , STARTLENGTH = 10;
 
-    private ArrayList<Point> points;
+    private ArrayList<com.games.snake.Point> points;
 
     private int verticalDir, horizontalDir;
     private int score, length;
@@ -19,7 +19,7 @@ public class Snake {
         this.CELLSIZE = CELLSIZE;
         points = new ArrayList<>();
         for (int i = 0; i < STARTLENGTH; i++) {
-            points.add(new Point(STARTX - (i* Snake.CELLSIZE),STARTY));
+            points.add(new com.games.snake.Point(STARTX - (i* Snake.CELLSIZE),STARTY));
         }
         verticalDir = 0;
         horizontalDir = 1;
@@ -33,9 +33,9 @@ public class Snake {
         if(!moving)
             return;
 
-        Point tail = points.get(points.size()-1);
-        Point oldHead = points.get(0);
-        Point newHead = new Point(oldHead.getX() + horizontalDir* CELLSIZE, oldHead.getY() + verticalDir* CELLSIZE);
+        com.games.snake.Point tail = points.get(points.size()-1);
+        com.games.snake.Point oldHead = points.get(0);
+        com.games.snake.Point newHead = new com.games.snake.Point(oldHead.getX() + horizontalDir* CELLSIZE, oldHead.getY() + verticalDir* CELLSIZE);
         for (int i = points.size()-1; i >0 ; i--) {
             points.set(i,points.get(i-1));
         }
@@ -47,7 +47,7 @@ public class Snake {
     }
 
     public boolean checkCollision() {
-        Point head = points.get(0);
+        com.games.snake.Point head = points.get(0);
         for (int i = 1; i < points.size(); i++) {
             if (points.get(i).getX()==head.getX() && points.get(i).getY()==head.getY()){
                 alive = false;
@@ -59,7 +59,7 @@ public class Snake {
     }
 
     public void render(Graphics g) {
-        for (Point p :points) {
+        for (com.games.snake.Point p :points) {
             g.setColor(Color.WHITE);
             g.fillRect(p.getX(),p.getY(), CELLSIZE, CELLSIZE);
         }
@@ -109,7 +109,7 @@ public class Snake {
         score+= value;
     }
 
-    public Point getHead() {
+    public com.games.snake.Point getHead() {
         return points.get(0);
     }
 

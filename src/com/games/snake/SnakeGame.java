@@ -1,12 +1,10 @@
-package games.snake;
+package com.games.snake;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
 
 public class SnakeGame extends Canvas implements Runnable, KeyListener {
 

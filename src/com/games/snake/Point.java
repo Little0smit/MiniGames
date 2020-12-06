@@ -1,4 +1,4 @@
-package games.snake;
+package com.games.snake;
 
 public class Point {
     private int x, y;

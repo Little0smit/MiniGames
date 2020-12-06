@@ -1,4 +1,4 @@
-package games.snake;
+package com.games.snake;
 
 import java.awt.*;
 
@@ -20,7 +20,7 @@ public class Token {
         value = 1;
     }
 
-    public int checkEaten(Point head){
+    public int checkEaten(com.games.snake.Point head){
         if(head.getX()==xPos && head.getY()==yPos){
             moveToken();
             return value;
