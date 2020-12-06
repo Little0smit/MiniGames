@@ -11,17 +11,17 @@ import java.util.Collection;
  */
 public abstract class Piece{
     protected final int piecePosition;
-    protected final Alliance colour;
+    protected final Alliance alliance;
 
-    Piece(final int piecePosition, final Alliance colour){
+    Piece(final int piecePosition, final Alliance alliance){
         this.piecePosition = piecePosition;
-        this.colour = colour;
+        this.alliance = alliance;
     }
 
     public abstract Collection<Move> calculateLegalMoves(final Board board);
 
 
     public Alliance getAlliance() {
-        return colour;
+        return alliance;
     }
 }

@@ -17,10 +17,11 @@ import java.util.List;
  */
 public class Knight extends Piece {
 
+    //TODO make these not magic offsets
     private final static int[] CANDIDATE_MOVE_OFFSETS = {-17,-15, -10, -6, 6, 10, 15, 17};
 
-    Knight(final int piecePosition, final Alliance colour) {
-        super(piecePosition, colour);
+    Knight(final int piecePosition, final Alliance alliance) {
+        super(piecePosition, alliance);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class Knight extends Piece {
                 } else {
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance destinationAlliance = pieceAtDestination.getAlliance();
-                    if(this.colour != destinationAlliance){
+                    if(this.alliance != destinationAlliance){
                         legalMoves.add(new AttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination));
                     }
                 }
@@ -48,6 +49,7 @@ public class Knight extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
+    //TODO make these not magic numbers
     private boolean isColumnException(int piecePosition, int currentCandidateOffset) {
         int currentColumn = BoardUtils.getColumn(piecePosition);
         switch (currentColumn){
@@ -55,9 +57,9 @@ public class Knight extends Piece {
                 return true;
             case 2:if(currentCandidateOffset == -10 || currentCandidateOffset == 6)
                 return true;
-            case 7:if(currentCandidateOffset == -6 || currentCandidateOffset == 10)
+            case BoardUtils.BOARD_WIDTH-1:if(currentCandidateOffset == -6 || currentCandidateOffset == 10)
                 return true;
-            case 8:if(currentCandidateOffset == -15 || currentCandidateOffset == -6 || currentCandidateOffset == 10 || currentCandidateOffset == 17)
+            case BoardUtils.BOARD_WIDTH:if(currentCandidateOffset == -15 || currentCandidateOffset == -6 || currentCandidateOffset == 10 || currentCandidateOffset == 17)
                 return true;
         }
         return false;
