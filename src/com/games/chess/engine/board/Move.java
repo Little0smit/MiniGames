@@ -38,4 +38,8 @@ public abstract class Move {
             this.attackedPiece = attackedPiece;
         }
     }
+
+    //TODO implement DoubleMove
+    //TODO implement PromotionMove
+
 }

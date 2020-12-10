@@ -55,10 +55,13 @@ public class Bishop extends Piece{
     private boolean isColumnException(int piecePosition, int currentCandidateOffset) {
         int currentColumn = BoardUtils.getColumn(piecePosition);
         switch (currentColumn){
-            case 1: if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH+1) || currentCandidateOffset == BoardUtils.BOARD_WIDTH-1)
+            case 1:
+                if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH+1) || currentCandidateOffset == BoardUtils.BOARD_WIDTH-1)
                 return true;
+                break;
             case BoardUtils.BOARD_WIDTH:if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH-1) || currentCandidateOffset == BoardUtils.BOARD_WIDTH+1)
                 return true;
+                break;
         }
         return false;
     }

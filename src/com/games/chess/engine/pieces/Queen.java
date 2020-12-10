@@ -56,16 +56,20 @@ public class Queen extends Piece{
         int currentColumn = BoardUtils.getColumn(piecePosition);
         switch (currentColumn){
             //currentCandidateOffset == -9 || -1 || 7
-            case 1: if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH+1) ||
+            case 1:
+                if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH+1) ||
                         currentCandidateOffset == -1 ||
                         currentCandidateOffset == BoardUtils.BOARD_WIDTH-1)
                 return true;
+                break;
 
             //currentCandidateOffset == -7 || 1 || 9
-            case BoardUtils.BOARD_WIDTH:if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH-1) ||
-                                            currentCandidateOffset == 1 ||
-                                            currentCandidateOffset == BoardUtils.BOARD_WIDTH+1)
+            case BoardUtils.BOARD_WIDTH:
+                if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH-1) ||
+                        currentCandidateOffset == 1 ||
+                        currentCandidateOffset == BoardUtils.BOARD_WIDTH+1)
                 return true;
+                break;
         }
         return false;
     }

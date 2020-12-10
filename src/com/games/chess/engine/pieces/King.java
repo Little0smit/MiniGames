@@ -13,25 +13,26 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created on 06/12/2020.
+ * Created on 09/12/2020.
  */
-public class Knight extends Piece {
+public class King extends Piece{
+    // -9, -8, -7, -1, 1, 7, 8, 9
+    private static final int[] CANDIDATE_MOVE_OFFSETS = {-(BoardUtils.BOARD_WIDTH+1), -BoardUtils.BOARD_WIDTH, -(BoardUtils.BOARD_WIDTH-1), -1,
+            1, BoardUtils.BOARD_WIDTH-1, BoardUtils.BOARD_WIDTH, BoardUtils.BOARD_WIDTH+1};
 
-    //TODO make these not magic offsets
-    private final static int[] CANDIDATE_MOVE_OFFSETS = {-17,-15, -10, -6, 6, 10, 15, 17};
 
-    Knight(final int piecePosition, final Alliance alliance) {
+
+    King(int piecePosition, Alliance alliance) {
         super(piecePosition, alliance);
     }
 
     @Override
     public Collection<Move> calculateLegalMoves(Board board) {
         final List<Move> legalMoves = new ArrayList<>();
-
         for(final int currentCandidateOffset : CANDIDATE_MOVE_OFFSETS){
-            final int candidateDestinationCoordinate = this.piecePosition + currentCandidateOffset;
+            final int candidateDestinationCoordinate = piecePosition + currentCandidateOffset;
             if(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)){
-                if(isColumnException(this.piecePosition,currentCandidateOffset)){
+                if(isColumnException(piecePosition,currentCandidateOffset)){
                     continue;
                 }
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
@@ -40,7 +41,8 @@ public class Knight extends Piece {
                 } else {
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance destinationAlliance = pieceAtDestination.getAlliance();
-                    if(this.alliance != destinationAlliance){
+                    if(alliance != destinationAlliance){
+                        //TODO check move doesn't put king into check
                         legalMoves.add(new AttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination));
                     }
                 }
@@ -49,24 +51,17 @@ public class Knight extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
-    //TODO make these not magic numbers
     private boolean isColumnException(int piecePosition, int currentCandidateOffset) {
         int currentColumn = BoardUtils.getColumn(piecePosition);
         switch (currentColumn){
             case 1:
-                if(currentCandidateOffset == -17 || currentCandidateOffset == -10 || currentCandidateOffset == 6 || currentCandidateOffset == 15)
-                return true;
-                break;
-            case 2:
-                if(currentCandidateOffset == -10 || currentCandidateOffset == 6)
-                return true;
-                break;
-            case BoardUtils.BOARD_WIDTH-1:
-                if(currentCandidateOffset == -6 || currentCandidateOffset == 10)
+                if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH+1) || currentCandidateOffset == -1
+                        || currentCandidateOffset == BoardUtils.BOARD_WIDTH-1)
                 return true;
                 break;
             case BoardUtils.BOARD_WIDTH:
-                if(currentCandidateOffset == -15 || currentCandidateOffset == -6 || currentCandidateOffset == 10 || currentCandidateOffset == 17)
+                if(currentCandidateOffset == -(BoardUtils.BOARD_WIDTH-1) || currentCandidateOffset == 1
+                        ||currentCandidateOffset == BoardUtils.BOARD_WIDTH+1)
                 return true;
                 break;
         }

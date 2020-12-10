@@ -54,10 +54,14 @@ public class Rook extends Piece{
     private boolean isColumnException(int piecePosition, int currentCandidateOffset) {
         int currentColumn = BoardUtils.getColumn(piecePosition);
         switch (currentColumn){
-            case 1: if(currentCandidateOffset == -1)
+            case 1:
+                if(currentCandidateOffset == -1)
                 return true;
-            case BoardUtils.BOARD_WIDTH:if(currentCandidateOffset == 1)
+                break;
+            case BoardUtils.BOARD_WIDTH:
+                if(currentCandidateOffset == 1)
                 return true;
+                break;
         }
         return false;
     }
