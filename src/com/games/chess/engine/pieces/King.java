@@ -22,7 +22,7 @@ public class King extends Piece{
 
 
 
-    King(int piecePosition, Alliance alliance) {
+    public King(int piecePosition, Alliance alliance) {
         super(piecePosition, alliance);
     }
 
@@ -66,5 +66,11 @@ public class King extends Piece{
                 break;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String piece = pieceType.KING.toString();;
+        return alliance.isBlack() ? piece : piece.toLowerCase();
     }
 }

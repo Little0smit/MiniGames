@@ -20,7 +20,7 @@ public class Bishop extends Piece{
     private final static int[] CANDIDATE_MOVE_OFFSETS = {-(BoardUtils.BOARD_WIDTH+1), -(BoardUtils.BOARD_WIDTH-1),
                                                             BoardUtils.BOARD_WIDTH-1, BoardUtils.BOARD_WIDTH+1};
 
-    Bishop(int piecePosition, Alliance alliance) {
+    public Bishop(int piecePosition, Alliance alliance) {
         super(piecePosition, alliance);
     }
 
@@ -64,6 +64,12 @@ public class Bishop extends Piece{
                 break;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String piece = pieceType.BISHOP.toString();;
+        return alliance.isBlack() ? piece : piece.toLowerCase();
     }
 
 }

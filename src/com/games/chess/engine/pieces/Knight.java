@@ -20,7 +20,7 @@ public class Knight extends Piece {
     //TODO make these not magic offsets
     private final static int[] CANDIDATE_MOVE_OFFSETS = {-17,-15, -10, -6, 6, 10, 15, 17};
 
-    Knight(final int piecePosition, final Alliance alliance) {
+    public Knight(final int piecePosition, final Alliance alliance) {
         super(piecePosition, alliance);
     }
 
@@ -71,5 +71,11 @@ public class Knight extends Piece {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String piece = pieceType.KNIGHT.toString();;
+        return alliance.isBlack() ? piece : piece.toLowerCase();
     }
 }

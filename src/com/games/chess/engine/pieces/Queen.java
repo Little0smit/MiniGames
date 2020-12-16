@@ -20,7 +20,7 @@ public class Queen extends Piece{
     private static final int[] CANDIDATE_MOVE_OFFSETS = {-(BoardUtils.BOARD_WIDTH+1), -BoardUtils.BOARD_WIDTH, -(BoardUtils.BOARD_WIDTH-1), -1,
                                                             1, BoardUtils.BOARD_WIDTH-1, BoardUtils.BOARD_WIDTH, BoardUtils.BOARD_WIDTH+1};
 
-    Queen(int piecePosition, Alliance alliance) {
+    public Queen(int piecePosition, Alliance alliance) {
         super(piecePosition, alliance);
     }
 
@@ -72,5 +72,11 @@ public class Queen extends Piece{
                 break;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String piece = pieceType.QUEEN.toString();;
+        return alliance.isBlack() ? piece : piece.toLowerCase();
     }
 }

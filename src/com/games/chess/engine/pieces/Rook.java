@@ -19,7 +19,7 @@ public class Rook extends Piece{
 
     private final static int[] CANDIDATE_MOVE_OFFSETS = {-BoardUtils.BOARD_WIDTH, -1, 1, BoardUtils.BOARD_WIDTH};
 
-    Rook(int piecePosition, Alliance alliance) {
+    public Rook(int piecePosition, Alliance alliance) {
         super(piecePosition, alliance);
     }
 
@@ -64,5 +64,11 @@ public class Rook extends Piece{
                 break;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String piece = pieceType.ROOK.toString();;
+        return alliance.isBlack() ? piece : piece.toLowerCase();
     }
 }

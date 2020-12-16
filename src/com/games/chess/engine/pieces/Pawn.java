@@ -21,7 +21,7 @@ public class Pawn extends Piece {
 
     private final int direction;
 
-    Pawn(int piecePosition, Alliance alliance) {
+    public Pawn(int piecePosition, Alliance alliance) {
         super(piecePosition, alliance);
         direction = alliance.getDirection();
     }
@@ -83,5 +83,11 @@ public class Pawn extends Piece {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String piece = pieceType.PAWN.toString();;
+        return alliance.isBlack() ? piece : piece.toLowerCase();
     }
 }

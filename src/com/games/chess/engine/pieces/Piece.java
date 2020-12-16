@@ -20,7 +20,33 @@ public abstract class Piece{
         firstMove = false;
     }
 
+    public int getPiecePosition(){
+        return piecePosition;
+    }
+
+    public enum pieceType{
+        PAWN("P"),
+        ROOK("R"),
+        KNIGHT("N"),
+        BISHOP("B"),
+        QUEEN("Q"),
+        KING("K");
+
+        private String pieceName;
+        pieceType(String pieceName) {
+            this.pieceName = pieceName;
+        }
+
+        @Override
+        public String toString() {
+            return pieceName;
+        }
+    }
+
     public abstract Collection<Move> calculateLegalMoves(final Board board);
+
+    @Override
+    public abstract String toString();
 
     public Alliance getAlliance() {
         return alliance;
