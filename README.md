@@ -6,9 +6,8 @@ Current Games finished are:
 	<li>Snake
 	
 Current Games in progress are:
-	<li>
+	<li>Chess
 	
 Current games on wishlist/TODO list are:
 	<li>PONG
-	<li>Chess
 	<li>Solitaire
